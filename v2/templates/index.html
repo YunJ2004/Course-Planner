@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Planner</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU2eOAeLEKcIU4SQ3B9u4SeftyRk1KM5u3VIR"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="mb-4">Course Planner</h1>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="alert alert-warning" role="alert">
+        {{ messages[0] }}
+      </div>
+      {% endif %}
+      {% endwith %}
+      <form method="post" action="/">
+        <div class="mb-3">
+          <label for="topic" class="form-label">Learning Topic</label>
+          <input
+            type="text"
+            class="form-control"
+            id="topic"
+            name="topic"
+            placeholder="e.g., Python programming"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="api_key" class="form-label"
+            >API Key for Language Model (optional)</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="api_key"
+            name="api_key"
+            placeholder="Enter your OpenAI API key"
+          />
+          <div id="apiHelp" class="form-text">
+            Your API key is used once to generate the plan and is not stored.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Plan</button>
+      </form>
+      <div class="mt-5">
+        <h5>About</h5>
+        <p>
+          This web application searches for online courses related to your
+          specified topic and leverages an AI language model to create a
+          structured learning plan. Enter a topic and optionally supply an API
+          key for the language model (for example, an OpenAI API key). The
+          results will include a curated list of courses and a recommended
+          learning pathway.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

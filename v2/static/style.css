@@ -1,0 +1,15 @@
+/*
+ * Custom styles for Course Planner
+ */
+
+body {
+  background-color: #f8f9fa;
+}
+
+h1, h3 {
+  color: #3b3f58;
+}
+
+.border {
+  background-color: #ffffff;
+}
